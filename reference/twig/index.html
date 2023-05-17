@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.737653198527">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 2.4.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Twig</title>
+    <meta name="title" content="Twig">
+    <meta name="description" content="Even though the helper functions simply renders a template block of a specific part of the data table," />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/reference/twig/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/reference/twig/">
+    <meta property="og:title" content="Twig">
+    <meta property="og:description" content="Even though the helper functions simply renders a template block of a specific part of the data table,">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="/reference/twig/">
+    <meta property="twitter:title" content="Twig">
+    <meta property="twitter:description" content="Even though the helper functions simply renders a template block of a specific part of the data table,">
+
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../resources/css/retype.css?v=2.4.0.737653198527" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.737653198527" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.737653198527" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.737653198527" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between grow pr-6 md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">DataTableBundle</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+        
+                            <input class="w-full h-10 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 placeholder-gray-400 dark:placeholder-dark-400"
+                            style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search" />
+                        </div>
+        
+                        <!-- Mobile search button mock -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placehokder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button mock -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter" />
+                </div>
+            
+                <div class="pl-6 mb-4 mt-1">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="grow min-w-0 px-6 md:px-16">
+                        <main class="relative pt-6 pb-16">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                
+                                <!-- Page content  -->
+<doc-anchor-target id="twig" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#twig">#</doc-anchor-trigger>
+        <span>Twig</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="functions">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#functions">#</doc-anchor-trigger>
+        <span>Functions</span>
+    </h2>
+</doc-anchor-target>
+<p>Even though the helper functions simply renders a template block of a specific part of the data table,
+they are very useful because they take use the theme configured in bundle.</p>
+<doc-anchor-target id="data_table">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table">#</doc-anchor-trigger>
+        <span><code v-pre>data_table</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table(data_table_view, variables)</code></p>
+<p>Renders the HTML of a complete data table, with action bar, filtration, pagination, etc.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-twig"><code v-pre class="language-twig">{# render the data table and disable the filtration feature #}
+{{ data_table(data_table, { 'filtration_enabled': false }) }}</code></pre>
+</doc-codeblock></div>
+<p>You will mostly use this helper for prototyping or if you use custom theme.
+If you need more flexibility in rendering the data table, you should use the other helpers
+to render individual parts of the data table instead.</p>
+<doc-anchor-target id="data_table_form_aware">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_form_aware">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_form_aware</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_form_aware(data_table_view, form_view, data_table_variables, form_variables)</code></p>
+<p>Renders the HTML of the data table with table part wrapped in the given form.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-twig"><code v-pre class="language-twig">{# render the data table wrapped in form and display a submit button next to it #}
+{{ data_table_form_aware(data_table, form, form_variables={ attr: { id: form.vars.id } }) }}
+&lt;input type=&quot;submit&quot; form=&quot;{{ form.vars.id }}&quot; value=&quot;Submit&quot;/&gt;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="data_table_table">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_table">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_table</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_table(data_table_view, variables)</code></p>
+<p>Renders the HTML of the data table.</p>
+<doc-anchor-target id="data_table_action_bar">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_action_bar">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_action_bar</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_action_bar(data_table_view, variables)</code></p>
+<p>Renders the HTML of the data table action bar, which includes filtration, exporting and personalization features.</p>
+<doc-anchor-target id="data_table_header_row">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_header_row">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_header_row</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_header_row(header_row_view, variables)</code></p>
+<p>Renders the header row of the data table.</p>
+<doc-anchor-target id="data_table_value_row">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_value_row">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_value_row</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_value_row(value_row_view, variables)</code></p>
+<p>Renders the value row of the data table.</p>
+<doc-anchor-target id="data_table_column_label">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_column_label">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_column_label</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_column_label(column_view, variables)</code></p>
+<p>Renders the label of the column. This takes care of all the label translation logic under the hood.</p>
+<doc-anchor-target id="data_table_column_header">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_column_header">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_column_header</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_column_header(column_view, variables)</code></p>
+<p>Renders the header of the column. Internally, this does the same as <code v-pre>data_table_column_label()</code> method,
+but additionally handles the sorting feature.</p>
+<doc-anchor-target id="data_table_column_value">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_column_value">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_column_value</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_column_value(column_view, variables)</code></p>
+<p>Renders the value of the column. It handles all the required logic to extract value from the row data
+based on the column configuration (e.g. to display formatted <code v-pre>name</code> of the <code v-pre>Project</code> entity).</p>
+<doc-anchor-target id="data_table_filters_form">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_filters_form">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_filters_form</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_filters_form(form)</code></p>
+<p>Renders the filters form. Accepts both the <code v-pre>FormInterface</code> and <code v-pre>FormView</code>.
+If given value is instance of <code v-pre>FormInterface</code>, the <code v-pre>createView()</code> method will be called.</p>
+<doc-anchor-target id="data_table_personalization_form">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_personalization_form">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_personalization_form</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_personalization_form(form)</code></p>
+<p>Renders the personalization form. Accepts both the <code v-pre>FormInterface</code> and <code v-pre>FormView</code>.
+If given value is instance of <code v-pre>FormInterface</code>, the <code v-pre>createView()</code> method will be called.</p>
+<doc-anchor-target id="data_table_export_form">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_export_form">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_export_form</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_export_form(form)</code></p>
+<p>Renders the export form. Accepts both the <code v-pre>FormInterface</code> and <code v-pre>FormView</code>.
+If given value is instance of <code v-pre>FormInterface</code>, the <code v-pre>createView()</code> method will be called.</p>
+<doc-anchor-target id="data_table_pagination">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data_table_pagination">#</doc-anchor-trigger>
+        <span><code v-pre>data_table_pagination</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>With arguments</strong>: <code v-pre>data_table_pagination(pagination_view, variables)</code></p>
+<p>Renders the pagination controls.</p>
+<p>Additionally, accepts the data table view as a first argument.
+In this case, the pagination view is extracted from the data table view &quot;pagination&quot; variable.</p>
+<doc-anchor-target id="variables">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#variables">#</doc-anchor-trigger>
+        <span>Variables</span>
+    </h2>
+</doc-anchor-target>
+<p>Certain types may define even more variables, and some variables here only really apply to certain types.
+To know the exact variables available for each type, check out the code of the templates used by your data table theme.</p>
+<doc-anchor-target id="data-table-variables">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data-table-variables">#</doc-anchor-trigger>
+        <span>Data table variables</span>
+    </h3>
+</doc-anchor-target>
+<p>The following variables are common to every data table type:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>name</code></td>
+<td>Name of the data table.</td>
+</tr>
+<tr>
+<td><code v-pre>title</code></td>
+<td>Title of the data table</td>
+</tr>
+<tr>
+<td><code v-pre>title_translation_parameters</code></td>
+<td>Parameters used in title translation.</td>
+</tr>
+<tr>
+<td><code v-pre>translation_domain</code></td>
+<td>Translation domain used in translatable strings in the data table.  If <code v-pre>false</code>, the translation is disabled.</td>
+</tr>
+<tr>
+<td><code v-pre>pagination_enabled</code></td>
+<td>If <code v-pre>true</code>, the pagination feature is enabled.</td>
+</tr>
+<tr>
+<td><code v-pre>sorting_enabled</code></td>
+<td>If <code v-pre>true</code>, the sorting feature is enabled.</td>
+</tr>
+<tr>
+<td><code v-pre>filtration_enabled</code></td>
+<td>If <code v-pre>true</code>, the filtration feature is enabled.</td>
+</tr>
+<tr>
+<td><code v-pre>personalization_enabled</code></td>
+<td>If <code v-pre>true</code>, the personalization feature is enabled.</td>
+</tr>
+<tr>
+<td><code v-pre>exporting_enabled</code></td>
+<td>If <code v-pre>true</code>, the exporting feature is enabled.</td>
+</tr>
+<tr>
+<td><code v-pre>page_parameter_name</code></td>
+<td>Name of the parameter that holds the current page number.</td>
+</tr>
+<tr>
+<td><code v-pre>per_page_parameter_name</code></td>
+<td>Name of the parameter that holds the pagination per page limit.</td>
+</tr>
+<tr>
+<td><code v-pre>sort_parameter_name</code></td>
+<td>Name of the parameter that holds the sorting data array (e.g. <code v-pre>[{sort_parameter_name}][field]</code>, <code v-pre>[{sort_parameter_name}][direction]</code>).</td>
+</tr>
+<tr>
+<td><code v-pre>filtration_parameter_name</code></td>
+<td>Name of the parameter that holds the filtration form data.</td>
+</tr>
+<tr>
+<td><code v-pre>personalization_parameter_name</code></td>
+<td>Name of the parameter that holds the personalization form data.</td>
+</tr>
+<tr>
+<td><code v-pre>export_parameter_name</code></td>
+<td>Name of the parameter that holds the export form data.</td>
+</tr>
+<tr>
+<td><code v-pre>has_active_filters</code></td>
+<td>If at least one filter is active, this value will equal <code v-pre>true</code>.</td>
+</tr>
+<tr>
+<td><code v-pre>filtration_data</code></td>
+<td>An instance of filtration data, that contains applied filters values.</td>
+</tr>
+<tr>
+<td><code v-pre>sorting_data</code></td>
+<td>An instance of sorting data, that contains applied sorting values.</td>
+</tr>
+<tr>
+<td><code v-pre>header_row</code></td>
+<td>An instance of headers row view.</td>
+</tr>
+<tr>
+<td><code v-pre>non_personalized_header_row</code></td>
+<td>An instance of headers row view without personalization applied.</td>
+</tr>
+<tr>
+<td><code v-pre>value_rows</code></td>
+<td>A list of instances of value rows views.</td>
+</tr>
+<tr>
+<td><code v-pre>pagination</code></td>
+<td>An instance of pagination.</td>
+</tr>
+<tr>
+<td><code v-pre>actions</code></td>
+<td>A list of actions defined for the data table.</td>
+</tr>
+<tr>
+<td><code v-pre>filters</code></td>
+<td>A list of filters defined for the data table.</td>
+</tr>
+<tr>
+<td><code v-pre>exporters</code></td>
+<td>A list of exporters defined for the data table.</td>
+</tr>
+<tr>
+<td><code v-pre>column_count</code></td>
+<td>Holds count of the columns, respecting the personalization.</td>
+</tr>
+<tr>
+<td><code v-pre>filtration_form</code></td>
+<td>Holds an instance of the filtration form view.</td>
+</tr>
+<tr>
+<td><code v-pre>personalization_form</code></td>
+<td>Holds an instance of the personalization form view.</td>
+</tr>
+<tr>
+<td><code v-pre>export_form</code></td>
+<td>Holds an instance of the export form view.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="column-header-variables">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#column-header-variables">#</doc-anchor-trigger>
+        <span>Column header variables</span>
+    </h3>
+</doc-anchor-target>
+<p>The following variables are common to every column type header:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>name</code></td>
+<td>Name of the column.</td>
+</tr>
+<tr>
+<td><code v-pre>column</code></td>
+<td>An instance of column view.</td>
+</tr>
+<tr>
+<td><code v-pre>row</code></td>
+<td>An instance of header row that the column belongs to.</td>
+</tr>
+<tr>
+<td><code v-pre>data_table</code></td>
+<td>An instance of data table view.</td>
+</tr>
+<tr>
+<td><code v-pre>label</code></td>
+<td>Label that will be used when rendering the column header.</td>
+</tr>
+<tr>
+<td><code v-pre>translation_parameters</code></td>
+<td>Parameters used when translating the header translatable values (e.g. label).</td>
+</tr>
+<tr>
+<td><code v-pre>translation_domain</code></td>
+<td>Translation domain used when translating the column translatable values. If <code v-pre>false</code>, the translation is disabled.</td>
+</tr>
+<tr>
+<td><code v-pre>sort_parameter_name</code></td>
+<td>Name of the parameter that holds the sorting data array (e.g. <code v-pre>[{sort_parameter_name}][field]</code>, <code v-pre>[{sort_parameter_name}][direction]</code>).</td>
+</tr>
+<tr>
+<td><code v-pre>sorted</code></td>
+<td>Determines whether the column is currently being sorted.</td>
+</tr>
+<tr>
+<td><code v-pre>sort_field</code></td>
+<td>Sort field used by the sortable behavior. If <code v-pre>false</code>, the sorting is disabled for the column.</td>
+</tr>
+<tr>
+<td><code v-pre>sort_direction</code></td>
+<td>Direction in which the column is currently being sorted.</td>
+</tr>
+<tr>
+<td><code v-pre>block_prefixes</code></td>
+<td>A list of block prefixes respecting the type inheritance.</td>
+</tr>
+<tr>
+<td><code v-pre>export</code></td>
+<td>An array of export options, including <code v-pre>label</code> and <code v-pre>translation_domain</code> options. Equals <code v-pre>false</code> if the column is not exportable.</td>
+</tr>
+<tr>
+<td><code v-pre>attr</code></td>
+<td>An array of attributes used in rendering the column header.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="column-value-variables">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#column-value-variables">#</doc-anchor-trigger>
+        <span>Column value variables</span>
+    </h3>
+</doc-anchor-target>
+<p>The following variables are common to every column type value:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>row</code></td>
+<td>An instance of value row that the column belongs to.</td>
+</tr>
+<tr>
+<td><code v-pre>data_table</code></td>
+<td>An instance of data table view.</td>
+</tr>
+<tr>
+<td><code v-pre>data</code></td>
+<td>Holds the norm data of a column.</td>
+</tr>
+<tr>
+<td><code v-pre>value</code></td>
+<td>Holds the string representation of a column value.</td>
+</tr>
+<tr>
+<td><code v-pre>translation_parameters</code></td>
+<td>Parameters used when translating the translatable values.</td>
+</tr>
+<tr>
+<td><code v-pre>translation_domain</code></td>
+<td>Translation domain used when translating the column translatable values. If <code v-pre>false</code>, the translation is disabled.</td>
+</tr>
+<tr>
+<td><code v-pre>block_prefixes</code></td>
+<td>A list of block prefixes respecting the type inheritance.</td>
+</tr>
+<tr>
+<td><code v-pre>export</code></td>
+<td>An array of export options, including <code v-pre>data</code>, <code v-pre>value</code>, <code v-pre>label</code> and <code v-pre>translation_domain</code> options. Equals <code v-pre>false</code> if the column is not exportable.</td>
+</tr>
+<tr>
+<td><code v-pre>attr</code></td>
+<td>An array of attributes used in rendering the column value.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="filter-variables">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#filter-variables">#</doc-anchor-trigger>
+        <span>Filter variables</span>
+    </h3>
+</doc-anchor-target>
+<p>The following variables are common to every filter type:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>name</code></td>
+<td>Name of the filter.</td>
+</tr>
+<tr>
+<td><code v-pre>form_name</code></td>
+<td>Form field name of the column.</td>
+</tr>
+<tr>
+<td><code v-pre>label</code></td>
+<td>Label that will be used when rendering the column header.</td>
+</tr>
+<tr>
+<td><code v-pre>label_translation_parameters</code></td>
+<td>Parameters used when translating the <code v-pre>label</code> option.</td>
+</tr>
+<tr>
+<td><code v-pre>translation_domain</code></td>
+<td>Translation domain used when translating the column translatable values. If <code v-pre>false</code>, the translation is disabled.</td>
+</tr>
+<tr>
+<td><code v-pre>query_path</code></td>
+<td>Field name used in the query (e.g. in DQL, like <code v-pre>product.name</code>)</td>
+</tr>
+<tr>
+<td><code v-pre>field_type</code></td>
+<td>FQCN of the form field type used to render the filter control.</td>
+</tr>
+<tr>
+<td><code v-pre>field_options</code></td>
+<td>Array of options passed to the form type defined in the <code v-pre>field_type</code>.</td>
+</tr>
+<tr>
+<td><code v-pre>operator_type</code></td>
+<td>FQCN of the form field type used to render the operator control.</td>
+</tr>
+<tr>
+<td><code v-pre>operator_options</code></td>
+<td>Array of options passed to the form type defined in the <code v-pre>operator_type</code>.</td>
+</tr>
+<tr>
+<td><code v-pre>data</code></td>
+<td>Holds the norm data of a filter.</td>
+</tr>
+<tr>
+<td><code v-pre>value</code></td>
+<td>Holds the string representation of a filter value.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="action-variables">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#action-variables">#</doc-anchor-trigger>
+        <span>Action variables</span>
+    </h3>
+</doc-anchor-target>
+<p>The following variables are common to every action type:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>name</code></td>
+<td>Name of the action.</td>
+</tr>
+<tr>
+<td><code v-pre>label</code></td>
+<td>Name of the action.</td>
+</tr>
+<tr>
+<td><code v-pre>data_table</code></td>
+<td>An instance of data table view.</td>
+</tr>
+<tr>
+<td><code v-pre>block_prefixes</code></td>
+<td>A list of block prefixes respecting the type inheritance.</td>
+</tr>
+<tr>
+<td><code v-pre>translation_domain</code></td>
+<td>Translation domain used when translating the action translatable values. If <code v-pre>false</code>, the translation is disabled.</td>
+</tr>
+<tr>
+<td><code v-pre>translation_parameters</code></td>
+<td>Parameters used when translating the action translatable values (e.g. label).</td>
+</tr>
+<tr>
+<td><code v-pre>attr</code></td>
+<td>An array of attributes used in rendering the action.</td>
+</tr>
+<tr>
+<td><code v-pre>icon_attr</code></td>
+<td>An array of attributes used in rendering the action icon.</td>
+</tr>
+<tr>
+<td><code v-pre>confirmation</code></td>
+<td>An array of action confirmation options. If <code v-pre>false</code>, action is not confirmable.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Note</h5>
+<p>Behind the scenes, these variables are made available to the <code v-pre>DataTableView</code>, <code v-pre>ColumnView</code> and <code v-pre>FilterView</code> objects of your data table
+when the DataTable component calls <code v-pre>buildView()</code>. To see what &quot;view&quot; variables a particular type has,
+find the source code for the used type class and look for the <code v-pre>buildView()</code> method.</p>
+        </div>
+    </div>
+</div>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results />
+                            </div>
+                            <footer class="clear-both">
+                                <div class="flex flex-wrap items-center justify-between mt-14">
+                                    <a class="my-2.5 inline-flex items-center text-sm whitespace-nowrap text-blue-500 dark:text-blue-400 hover:text-blue-700 hover:underline" href="https://github.com/Kreyu/data-table-bundle/edit/main/docs/reference/twig.md" target="_blank" rel="noopener">
+                                        <svg class="mr-1.5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M20 12c-.55 0-1 .45-1 1v7c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h7c.55 0 1-.45 1-1s-.45-1-1-1H4C2.35 3 1 4.35 1 6v14c0 1.65 1.35 3 3 3h14c1.65 0 3-1.35 3-3v-7c0-.55-.45-1-1-1z" /><path d="M22.21 1.79c-1.18-1.18-3.24-1.18-4.41 0l-9.5 9.5c-.13.13-.22.29-.26.46l-1 4c-.08.34.01.7.26.95.18.2.44.3.7.3.08 0 .16-.01.24-.03l4-1c.18-.04.34-.13.46-.26l9.5-9.5c1.22-1.22 1.22-3.2.01-4.42zm-1.42 3l-9.3 9.3-2.11.53.53-2.11 9.3-9.3c.42-.42 1.16-.42 1.59 0 .43.43.43 1.15-.01 1.58z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        <span>Edit this page</span>
+                                    </a>
+                                </div>
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../reference/configuration/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Configuration</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2023. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script>window.__DOCS__ = { "title": "Twig", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+</body>
+</html>
