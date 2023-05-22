@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.738108116357">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.738111085019">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -33,12 +33,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.738108116357" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.738111085019" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.738108116357" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.738111085019" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.738108116357" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.738108116357" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.738111085019" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.738111085019" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -372,6 +372,99 @@ class ProductController extends AbstractController
         if ($dataTable-&gt;isExporting()) {
             return $this-&gt;file($dataTable-&gt;export());
         }
+    }
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="exporting-without-user-input">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exporting-without-user-input">#</doc-anchor-trigger>
+        <span>Exporting without user input</span>
+    </h2>
+</doc-anchor-target>
+<p>To export the data table manually, without user input, use the <code v-pre>export()</code> method directly:</p>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/Controller/ProductController.php</div>
+<pre class="language-php" data-line="13-14"><code v-pre class="language-php">use App\DataTable\Type\ProductDataTableType;
+use Kreyu\Bundle\DataTableBundle\DataTableFactoryAwareTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class ProductController extends AbstractController
+{
+    use DataTableFactoryAwareTrait;
+
+    public function index()
+    {
+        $dataTable = $this-&gt;createDataTable(ProductDataTableType::class);
+
+        // An instance of ExportFile, which extends the HttpFoundation File object
+        $file = $dataTable-&gt;export();
+        
+        // For example, save it manually:
+        $file-&gt;move(__DIR__);
+        
+        // Or return a BinaryFileResponse to download it in browser:   
+        return $this-&gt;file($file);
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>If the data table has no specified exporters, this will result in an exception:</p>
+<blockquote>
+<p>Unable to create export data from data table without exporters</p>
+</blockquote>
+<p>By default, the export will contain records from <strong>all pages</strong>.
+Also, if enabled, the personalization will be <strong>included</strong>.
+To change this behaviour, either configure the data table type&#x27;s default export data:</p>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/DataTable/Type/ProductDataTableType.php</div>
+<pre class="language-php"><code v-pre class="language-php">use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
+use Kreyu\Bundle\DataTableBundle\Type\AbstractDataTableType;
+use Kreyu\Bundle\DataTableBundle\Exporter\ExportData;
+use Kreyu\Bundle\DataTableBundle\Exporter\ExportStrategy;
+
+class ProductDataTableType extends AbstractDataTableType
+{
+    public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
+    {
+        $exporters = $builder-&gt;getExporters();
+        
+        $builder-&gt;setDefaultExportData(new ExportData(
+            filename: 'products',
+            exporter: $exporters[0],
+            strategy: ExportStrategy::INCLUDE_CURRENT_PAGE,
+            includePersonalization: false,
+        ));
+        
+        // or by creating the export data from an array:
+        $builder-&gt;setDefaultPersonalizationData(PersonalizationData::fromArray([
+            'filename' =&gt; 'products',
+            'exporter' =&gt; $exporters[0]
+            'strategy' =&gt; ExportStrategy::INCLUDE_CURRENT_PAGE,
+            'include_personalization' =&gt; false,
+        ]));
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>or pass the export data directly to the <code v-pre>export()</code> method:</p>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/Controller/ProductController.php</div>
+<pre class="language-php" data-line="13-14,16"><code v-pre class="language-php">use App\DataTable\Type\ProductDataTableType;
+use Kreyu\Bundle\DataTableBundle\DataTableFactoryAwareTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class ProductController extends AbstractController
+{
+    use DataTableFactoryAwareTrait;
+
+    public function index()
+    {
+        $dataTable = $this-&gt;createDataTable(ProductDataTableType::class);
+
+        $exportData = ExportData::fromDataTable($dataTable);
+        $exportData-&gt;includePersonalization = false; 
+        
+        $file = $dataTable-&gt;export($exportData);
+        
+        // ...
     }
 }</code></pre>
 </doc-codeblock></div>
