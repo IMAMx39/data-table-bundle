@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.740579010486">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.741020321825">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -31,12 +31,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=3.0.3.740579010486" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=3.0.3.741020321825" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.3.740579010486" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.3.741020321825" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.3.740579010486" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=3.0.3.740579010486" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.3.741020321825" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=3.0.3.741020321825" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -226,33 +226,80 @@
         <span>Selecting a theme</span>
     </h2>
 </doc-anchor-target>
-<p>To select a theme, provide which one to use in the bundle configuration file.
-For example, in order to use the <a href="https://getbootstrap.com/docs/5.0/">Bootstrap 5</a> theme:</p>
+<p>To select a theme, use <code v-pre>themes</code> option.</p>
+<p>For example, in order to use the <a href="https://getbootstrap.com/docs/5.0/">Bootstrap 5</a> theme:</p>
 <doc-tabs>
-<doc-tab id="yaml">
-<template #title>YAML</template>
+<doc-tab id="globally-yaml">
+<template #title>Globally (YAML)</template>
 <div class="codeblock-wrapper"><doc-codeblock line-numbers>
 <div class="codeblock-title">config/packages/kreyu_data_table.yaml</div>
 <pre class="language-yaml"><code v-pre class="language-yaml">kreyu_data_table:
-  themes:
-    - '@KreyuDataTable/themes/bootstrap_5.html.twig'</code></pre>
+  defaults:
+    themes:
+      - '@KreyuDataTable/themes/bootstrap_5.html.twig'</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab id="php">
-<template #title>PHP</template>
+<doc-tab id="globally-php">
+<template #title>Globally (PHP)</template>
 <div class="codeblock-wrapper"><doc-codeblock line-numbers>
 <div class="codeblock-title">config/packages/kreyu_data_table.php</div>
 <pre class="language-php"><code v-pre class="language-php">use Symfony\Config\KreyuDataTableConfig;
 
 return static function (KreyuDataTableConfig $config) {
-    $config-&gt;themes([
+    $config-&gt;defaults()-&gt;themes([
         '@KreyuDataTable/themes/bootstrap_5.html.twig',
     ]);
 };</code></pre>
 </doc-codeblock></div>
 </doc-tab>
+<doc-tab id="for-data-table-type">
+<template #title>For data table type</template>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/DataTable/Type/ProductDataTable.php</div>
+<pre class="language-php"><code v-pre class="language-php">use Kreyu\Bundle\DataTableBundle\Type\AbstractDataTableType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class ProductDataTableType extends AbstractDataTableType
+{
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver-&gt;setDefaults([
+            'themes' =&gt; [
+                '@KreyuDataTable/themes/bootstrap_5.html.twig',
+            ],
+        ]);
+    }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab id="for-specific-data-table">
+<template #title>For specific data table</template>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/Controller/ProductController.php</div>
+<pre class="language-php"><code v-pre class="language-php">use App\DataTable\Type\ProductDataTableType;
+use Kreyu\Bundle\DataTableBundle\DataTableFactoryAwareTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class ProductController extends AbstractController
+{
+    use DataTableFactoryAwareTrait;
+    
+    public function index()
+    {
+        $dataTable = $this-&gt;createDataTable(
+            type: ProductDataTableType::class, 
+            query: $query,
+            options: [
+                'themes' =&gt; [
+                    '@KreyuDataTable/themes/bootstrap_5.html.twig',
+                ],
+            ],
+        );
+    }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
 </doc-tabs>
-<p>For more information, see <a href="../../reference/configuration/#themes">&quot;themes&quot; option configuration reference</a>.</p>
 <doc-anchor-target id="customizing-existing-theme">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#customizing-existing-theme">#</doc-anchor-trigger>
@@ -270,37 +317,85 @@ you can provide your own theme with only a fraction of Twig blocks,
 using the built-in themes as a fallback, for example:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-twig"><code v-pre class="language-twig">{# templates/data_table/theme.html.twig #}
-{% block kreyu_data_table_column_boolean %}
+{% block column_boolean_value %}
     {# ... #}
 {% endblock %}</code></pre>
 </doc-codeblock></div>
 <doc-tabs>
-<doc-tab id="yaml">
-<template #title>YAML</template>
+<doc-tab id="globally-yaml">
+<template #title>Globally (YAML)</template>
 <div class="codeblock-wrapper"><doc-codeblock line-numbers>
 <div class="codeblock-title">config/packages/kreyu_data_table.yaml</div>
 <pre class="language-yaml"><code v-pre class="language-yaml">kreyu_data_table:
-  themes:
-    - 'templates/data_table/theme.html.twig'
-    - '@KreyuDataTable/themes/bootstrap_5.html.twig'</code></pre>
+  defaults:
+    themes:
+      - '@KreyuDataTable/themes/bootstrap_5.html.twig'</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab id="php">
-<template #title>PHP</template>
+<doc-tab id="globally-php">
+<template #title>Globally (PHP)</template>
 <div class="codeblock-wrapper"><doc-codeblock line-numbers>
 <div class="codeblock-title">config/packages/kreyu_data_table.php</div>
 <pre class="language-php"><code v-pre class="language-php">use Symfony\Config\KreyuDataTableConfig;
 
 return static function (KreyuDataTableConfig $config) {
-    $config-&gt;themes([
+    $config-&gt;defaults()-&gt;themes([
         'templates/data_table/theme.html.twig',
         '@KreyuDataTable/themes/bootstrap_5.html.twig',
     ]);
 };</code></pre>
 </doc-codeblock></div>
 </doc-tab>
+<doc-tab id="for-data-table-type">
+<template #title>For data table type</template>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/DataTable/Type/ProductDataTable.php</div>
+<pre class="language-php"><code v-pre class="language-php">use Kreyu\Bundle\DataTableBundle\Type\AbstractDataTableType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class ProductDataTableType extends AbstractDataTableType
+{
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver-&gt;setDefaults([
+            'themes' =&gt; [
+                'templates/data_table/theme.html.twig',
+                '@KreyuDataTable/themes/bootstrap_5.html.twig',
+            ],
+        ]);
+    }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab id="for-specific-data-table">
+<template #title>For specific data table</template>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/Controller/ProductController.php</div>
+<pre class="language-php"><code v-pre class="language-php">use App\DataTable\Type\ProductDataTableType;
+use Kreyu\Bundle\DataTableBundle\DataTableFactoryAwareTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class ProductController extends AbstractController
+{
+    use DataTableFactoryAwareTrait;
+    
+    public function index()
+    {
+        $dataTable = $this-&gt;createDataTable(
+            type: ProductDataTableType::class, 
+            query: $query,
+            options: [
+                'themes' =&gt; [
+                    'templates/data_table/theme.html.twig',
+                    '@KreyuDataTable/themes/bootstrap_5.html.twig',
+                ],
+            ],
+        );
+    }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
 </doc-tabs>
-<p>For more information, see <a href="../../reference/configuration/#themes">&quot;themes&quot; option configuration reference</a>.</p>
 
                                 
                                 <!-- Required only on API pages -->

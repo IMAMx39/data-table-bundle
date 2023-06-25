@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.740579010486">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.741020321825">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Configuration - DataTableBundle</title>
     <meta name="title" content="Configuration - DataTableBundle">
-    <meta name="description" content="This bundle can be configured using the config/packages/kreyu_data_table.yaml file." />
+    <meta name="description" content="This bundle can be configured using the:" />
 
     <!-- Canonical -->
     <link rel="canonical" href="/reference/configuration/" />
@@ -20,23 +20,23 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/reference/configuration/">
     <meta property="og:title" content="Configuration - DataTableBundle">
-    <meta property="og:description" content="This bundle can be configured using the config/packages/kreyu_data_table.yaml file.">
+    <meta property="og:description" content="This bundle can be configured using the:">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/reference/configuration/">
     <meta property="twitter:title" content="Configuration - DataTableBundle">
-    <meta property="twitter:description" content="This bundle can be configured using the config/packages/kreyu_data_table.yaml file.">
+    <meta property="twitter:description" content="This bundle can be configured using the:">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=3.0.3.740579010486" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=3.0.3.741020321825" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.3.740579010486" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.3.741020321825" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.3.740579010486" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=3.0.3.740579010486" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.3.741020321825" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=3.0.3.741020321825" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -188,41 +188,11 @@
         <span>Configuration</span>
     </h1>
 </doc-anchor-target>
-<p>This bundle can be configured using the <code v-pre>config/packages/kreyu_data_table.yaml</code> file.</p>
-<doc-anchor-target id="themes">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#themes">#</doc-anchor-trigger>
-        <span>Themes</span>
-    </h2>
-</doc-anchor-target>
-<p>You can define which Twig theme to use with the data tables using the <code v-pre>themes</code> node.
-By default, the base theme is used. Because themes are built using <a href="https://twig.symfony.com/doc/3.x/tags/block.html">Twig blocks</a>,
-the bundle iterates through given themes, until it finds the desired block, using the first one it finds.</p>
-<p>For more information about theming, see <a href="theming.md">theming reference</a>.</p>
-<doc-tabs>
-<doc-tab id="yaml">
-<template #title>YAML</template>
-<div class="codeblock-wrapper"><doc-codeblock line-numbers>
-<div class="codeblock-title">config/packages/kreyu_data_table.yaml</div>
-<pre class="language-yaml"><code v-pre class="language-yaml">kreyu_data_table:
-  themes:
-    - '@KreyuDataTable/themes/base.html.twig'</code></pre>
-</doc-codeblock></div>
-</doc-tab>
-<doc-tab id="php">
-<template #title>PHP</template>
-<div class="codeblock-wrapper"><doc-codeblock line-numbers>
-<div class="codeblock-title">config/packages/kreyu_data_table.php</div>
-<pre class="language-php"><code v-pre class="language-php">use Symfony\Config\KreyuDataTableConfig;
-
-return static function (KreyuDataTableConfig $config) {
-    $config-&gt;themes([
-        '@KreyuDataTable/themes/base.html.twig',
-    ]);
-};</code></pre>
-</doc-codeblock></div>
-</doc-tab>
-</doc-tabs>
+<p>This bundle can be configured using the:</p>
+<ul>
+<li><code v-pre>config/packages/kreyu_data_table.yaml</code> (when using YAML configuration);</li>
+<li><code v-pre>config/packages/kreyu_data_table.php</code> (when using PHP configuration);</li>
+</ul>
 <doc-anchor-target id="data-table-builder-defaults">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#data-table-builder-defaults">#</doc-anchor-trigger>
@@ -259,6 +229,8 @@ that extends every data table type class with <a href="https://github.com/Kreyu/
 <div class="codeblock-title">config/packages/kreyu_data_table.yaml</div>
 <pre class="language-yaml"><code v-pre class="language-yaml">kreyu_data_table:
   defaults:
+    themes:
+      - '@KreyuDataTable/themes/base.html.twig'
     column_factory: kreyu_data_table.column.factory
     request_handler: kreyu_data_table.request_handler.http_foundation
     sorting:
@@ -310,6 +282,9 @@ return static function (KreyuDataTableConfig $config) {
     $defaults = $config-&gt;defaults();
 
     $defaults
+        -&gt;themes([
+            '@KreyuDataTable/themes/base.html.twig'
+        ])
         -&gt;columnFactory('kreyu_data_table.column.factory')
         -&gt;requestHandler('kreyu_data_table.request_handler.http_foundation')
     ;

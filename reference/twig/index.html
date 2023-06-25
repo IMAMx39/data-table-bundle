@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.740579010486">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.741020321825">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -31,12 +31,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=3.0.3.740579010486" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=3.0.3.741020321825" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.3.740579010486" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.3.741020321825" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.3.740579010486" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=3.0.3.740579010486" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.3.741020321825" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=3.0.3.741020321825" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -288,7 +288,7 @@ based on the column configuration (e.g. to display formatted <code v-pre>name</c
         <span><code v-pre>data_table_filters_form</code></span>
     </h3>
 </doc-anchor-target>
-<p><strong>With arguments</strong>: <code v-pre>data_table_filters_form(form)</code></p>
+<p><strong>With arguments</strong>: <code v-pre>data_table_filters_form(form, variables)</code></p>
 <p>Renders the filters form. Accepts both the <code v-pre>FormInterface</code> and <code v-pre>FormView</code>.
 If given value is instance of <code v-pre>FormInterface</code>, the <code v-pre>createView()</code> method will be called.</p>
 <doc-anchor-target id="data_table_personalization_form">
@@ -297,7 +297,7 @@ If given value is instance of <code v-pre>FormInterface</code>, the <code v-pre>
         <span><code v-pre>data_table_personalization_form</code></span>
     </h3>
 </doc-anchor-target>
-<p><strong>With arguments</strong>: <code v-pre>data_table_personalization_form(form)</code></p>
+<p><strong>With arguments</strong>: <code v-pre>data_table_personalization_form(form, variables)</code></p>
 <p>Renders the personalization form. Accepts both the <code v-pre>FormInterface</code> and <code v-pre>FormView</code>.
 If given value is instance of <code v-pre>FormInterface</code>, the <code v-pre>createView()</code> method will be called.</p>
 <doc-anchor-target id="data_table_export_form">
@@ -306,7 +306,7 @@ If given value is instance of <code v-pre>FormInterface</code>, the <code v-pre>
         <span><code v-pre>data_table_export_form</code></span>
     </h3>
 </doc-anchor-target>
-<p><strong>With arguments</strong>: <code v-pre>data_table_export_form(form)</code></p>
+<p><strong>With arguments</strong>: <code v-pre>data_table_export_form(form, variables)</code></p>
 <p>Renders the export form. Accepts both the <code v-pre>FormInterface</code> and <code v-pre>FormView</code>.
 If given value is instance of <code v-pre>FormInterface</code>, the <code v-pre>createView()</code> method will be called.</p>
 <doc-anchor-target id="data_table_pagination">
@@ -343,6 +343,10 @@ To know the exact variables available for each type, check out the code of the t
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code v-pre>themes</code></td>
+<td>Themes to apply for the data table.</td>
+</tr>
 <tr>
 <td><code v-pre>name</code></td>
 <td>Name of the data table.</td>
