@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.742054373624">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.742992937760">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -14,29 +14,29 @@
     <meta name="description" content="The LinkActionType represents an action displayed as a link." />
 
     <!-- Canonical -->
-    <link rel="canonical" href="/reference/actions/types/link/" />
+    <link rel="canonical" href="https://data-table-bundle.swroblewski.pl/reference/actions/types/link/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/reference/actions/types/link/">
+    <meta property="og:url" content="https://data-table-bundle.swroblewski.pl/reference/actions/types/link/">
     <meta property="og:title" content="Link action type - DataTableBundle">
     <meta property="og:description" content="The LinkActionType represents an action displayed as a link.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/reference/actions/types/link/">
+    <meta property="twitter:url" content="https://data-table-bundle.swroblewski.pl/reference/actions/types/link/">
     <meta property="twitter:title" content="Link action type - DataTableBundle">
     <meta property="twitter:description" content="The LinkActionType represents an action displayed as a link.">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../../static/favicon.png" rel="icon" />
-    <link href="../../../../resources/css/retype.css?v=3.0.3.742054373624" rel="stylesheet" />
+    <link href="../../../../resources/css/retype.css?v=3.0.3.742992937760" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../../resources/js/config.js?v=3.0.3.742054373624" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=3.0.3.742992937760" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=3.0.3.742054373624" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=3.0.3.742054373624" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=3.0.3.742992937760" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=3.0.3.742992937760" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -372,12 +372,11 @@ $builder
     </h3>
 </doc-anchor-target>
 <ul>
-<li><strong>type</strong>: <code v-pre>bool</code> or <code v-pre>array</code></li>
+<li><strong>type</strong>: <code v-pre>bool</code>, <code v-pre>array</code> or <code v-pre>callable</code></li>
 <li><strong>default</strong>: <code v-pre>false</code></li>
 </ul>
-<p>Determines whether the action is confirmable.
-Setting it to <code v-pre>true</code> will make the action confirmable with default confirmation configuration.
-The array accepts the following options:</p>
+<p>Determines whether the action is confirmable, which displays a modal where user have to acknowledge the process.
+The modal can be configured by passing an array with the following options:</p>
 <doc-anchor-target id="translation_domain-1">
     <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#translation_domain-1">#</doc-anchor-trigger>
@@ -385,9 +384,10 @@ The array accepts the following options:</p>
     </h4>
 </doc-anchor-target>
 <ul>
-<li><strong>type</strong>: <code v-pre>null</code> or <code v-pre>string</code></li>
+<li><strong>type</strong>: <code v-pre>false</code> or <code v-pre>string</code></li>
 <li><strong>default</strong>: <code v-pre>'KreyuDataTable'</code></li>
 </ul>
+<p>Translation domain used in translation of action confirmation labels.</p>
 <doc-anchor-target id="label_title">
     <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#label_title">#</doc-anchor-trigger>
@@ -436,19 +436,10 @@ The array accepts the following options:</p>
 </doc-anchor-target>
 <ul>
 <li><strong>type</strong>: <code v-pre>null</code> or <code v-pre>string</code></li>
-<li><strong>default</strong>: <code v-pre>'danger'</code></li>
-<li><strong>allowed values</strong>: &#x27;info&#x27;, &#x27;warning&#x27;, &#x27;danger&#x27;</li>
+<li><strong>default</strong>: <code v-pre>danger</code></li>
+<li><strong>allowed values</strong>: <code v-pre>danger</code>, <code v-pre>warning</code>, <code v-pre>info</code></li>
 </ul>
-<doc-anchor-target id="href-1">
-    <h4>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#href-1">#</doc-anchor-trigger>
-        <span><code v-pre>href</code></span>
-    </h4>
-</doc-anchor-target>
-<ul>
-<li><strong>type</strong>: <code v-pre>null</code> or <code v-pre>string</code></li>
-<li><strong>default</strong>: <code v-pre>null</code></li>
-</ul>
+<p>Represents a type of the action confirmation, which determines the color of the displayed modal.</p>
 
                                 
                                 <!-- Required only on API pages -->
