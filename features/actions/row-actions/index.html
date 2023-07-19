@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743086605017">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743088604596">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -33,12 +33,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../static/favicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=3.0.3.743086605017" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=3.0.3.743088604596" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.743086605017" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.743088604596" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.743086605017" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=3.0.3.743086605017" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.743088604596" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=3.0.3.743088604596" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -378,10 +378,10 @@ class ProductController extends AbstractController
         $actions = $dataTable-&gt;getRowActions();
         
         // or specific row action:
-        $action = $dataTable-&gt;getRowAction('create');
+        $action = $dataTable-&gt;getRowAction('update');
         
         // or simply check whether the row action is defined:
-        if ($dataTable-&gt;hasRowAction('create')) {
+        if ($dataTable-&gt;hasRowAction('update')) {
             // ...
         }
     }
@@ -456,7 +456,7 @@ class ProductDataTableType extends AbstractDataTableType
 {
     public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
     {
-        $builder-&gt;addRowAction('create', ButtonActionType::class, [
+        $builder-&gt;addRowAction('update', ButtonActionType::class, [
             'confirmation' =&gt; true,
         ]);
     }
@@ -473,7 +473,7 @@ class ProductDataTableType extends AbstractDataTableType
 {
     public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
     {
-        $builder-&gt;addRowAction('create', ButtonActionType::class, [
+        $builder-&gt;addRowAction('update', ButtonActionType::class, [
             'confirmation' =&gt; [
                 'translation_domain' =&gt; 'KreyuDataTable',
                 'label_title' =&gt; 'Action confirmation',
@@ -487,6 +487,36 @@ class ProductDataTableType extends AbstractDataTableType
 }</code></pre>
 </doc-codeblock></div>
 <p>For reference, see <a href="../../../reference/actions/types/action/#confirmation">action&#x27;s <code v-pre>confirmation</code> option documentation</a>.</p>
+<doc-anchor-target id="conditionally-rendering-the-action">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#conditionally-rendering-the-action">#</doc-anchor-trigger>
+        <span>Conditionally rendering the action</span>
+    </h2>
+</doc-anchor-target>
+<p>Action visibility can be configured using its <a href="../../../reference/actions/types/action/#visible"><code v-pre>visible</code> option</a>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-php"><code v-pre class="language-php">use Kreyu\Bundle\DataTableBundle\Action\Type\ButtonActionType;
+
+$builder
+    -&gt;addRowAction('update', ButtonActionType::class, [
+        'visible' =&gt; $this-&gt;isGranted('ROLE_ADMIN'),
+    ])
+;</code></pre>
+</doc-codeblock></div>
+<p>This will determine the visibility of the action in every row.
+In some cases, it may be useful to hide the action based on the row data, for example, only for products marked as &quot;removable&quot;.
+In this case, the action&#x27;s <code v-pre>visible</code> option can be set to a callable, which receives the row data as the first argument:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-php"><code v-pre class="language-php">use Kreyu\Bundle\DataTableBundle\Action\Type\ButtonActionType;
+
+$builder
+    -&gt;addRowAction('update', ButtonActionType::class, [
+        'visible' =&gt; function (Product $product) {
+            return $product-&gt;isRemovable();
+        },
+    ])
+;</code></pre>
+</doc-codeblock></div>
 
                                 
                                 <!-- Required only on API pages -->
