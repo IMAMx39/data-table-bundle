@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743006856115">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743074933933">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -31,12 +31,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../static/favicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=3.0.3.743006856115" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=3.0.3.743074933933" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.743006856115" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.743074933933" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.743006856115" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=3.0.3.743006856115" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.743074933933" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=3.0.3.743074933933" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -477,10 +477,15 @@ For example, checking rows with ID 1, 2 will result in:</p>
 <p>Using the above configuration, checking rows with ID 1, 2 will result in:</p>
 <ul>
 <li>every batch action&#x27;s <code v-pre>href</code> parameter appended with <code v-pre>product_id[]=1&amp;product_id[]=2</code></li>
-<li>every batch action&#x27;s <code v-pre>data-product-id</code> parameter set to <code v-pre>[1,2,3]</code></li>
+<li>every batch action&#x27;s <code v-pre>data-product-id</code> parameter set to <code v-pre>[1,2]</code></li>
 </ul>
 <p>If the action has no <code v-pre>href</code> parameter, the query parameters will not be appended.
 The data parameters are not used internally and can be used for custom scripts.</p>
+<p>If <code v-pre>FormActionType</code> is used, the scripts will append hidden inputs with selected values, for example:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;input type=&quot;hidden&quot; name=&quot;id[]&quot; value=&quot;1&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;id[]&quot; value=&quot;2&quot;&gt;</code></pre>
+</doc-codeblock></div>
 <doc-anchor-target id="adding-multiple-checkbox-columns">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#adding-multiple-checkbox-columns">#</doc-anchor-trigger>
@@ -538,6 +543,11 @@ class ProductDataTableType extends AbstractDataTableType
 <li>every batch action&#x27;s <code v-pre>href</code> parameter appended with <code v-pre>product_id[]=1&amp;category_id[]=4</code></li>
 <li>every batch action&#x27;s <code v-pre>data-product-id</code> parameter set to <code v-pre>[1]</code> and <code v-pre>data-category-id</code> set to <code v-pre>[4]</code></li>
 </ul>
+<p>If <code v-pre>FormActionType</code> is used, the scripts will append hidden inputs with selected values, for example:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;input type=&quot;hidden&quot; name=&quot;product_id[]&quot; value=&quot;1&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;category_id[]&quot; value=&quot;4&quot;&gt;</code></pre>
+</doc-codeblock></div>
 
                                 
                                 <!-- Required only on API pages -->
