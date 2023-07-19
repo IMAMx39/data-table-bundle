@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743083241554">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743083253924">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Adding actions - DataTableBundle</title>
     <meta name="title" content="Adding actions - DataTableBundle">
-    <meta name="description" content="What is a list of products without the ability of creating and editing the records? In this bundle, there are two kinds of actions:" />
+    <meta name="description" content="What is a list of products without the ability of creating and editing the records? In this bundle, there are " />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://data-table-bundle.swroblewski.pl/basic-usage/adding-actions/" />
@@ -20,25 +20,25 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://data-table-bundle.swroblewski.pl/basic-usage/adding-actions/">
     <meta property="og:title" content="Adding actions - DataTableBundle">
-    <meta property="og:description" content="What is a list of products without the ability of creating and editing the records? In this bundle, there are two kinds of actions:">
+    <meta property="og:description" content="What is a list of products without the ability of creating and editing the records? In this bundle, there are ">
     <meta property="og:image" content="https://data-table-bundle.swroblewski.pl/static/global_action.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://data-table-bundle.swroblewski.pl/basic-usage/adding-actions/">
     <meta property="twitter:title" content="Adding actions - DataTableBundle">
-    <meta property="twitter:description" content="What is a list of products without the ability of creating and editing the records? In this bundle, there are two kinds of actions:">
+    <meta property="twitter:description" content="What is a list of products without the ability of creating and editing the records? In this bundle, there are ">
     <meta property="twitter:image" content="https://data-table-bundle.swroblewski.pl/static/global_action.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=3.0.3.743083241554" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=3.0.3.743083253924" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.3.743083241554" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.3.743083253924" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.3.743083241554" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=3.0.3.743083241554" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.3.743083253924" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=3.0.3.743083253924" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -191,10 +191,11 @@
     </h1>
 </doc-anchor-target>
 <p>What is a list of products without the ability of creating and editing the records?
-In this bundle, there are two kinds of actions:</p>
+In this bundle, there are <em>three</em> kinds of actions:</p>
 <ul>
-<li><doc-anchor-trigger to="#adding-global-actions">global action</doc-anchor-trigger>, displayed above the data table - e.g. &quot;Create new user&quot;;</li>
-<li><doc-anchor-trigger to="#adding-row-actions">row action</doc-anchor-trigger>, displayed on each row, e.g. &quot;Edit&quot;, &quot;Delete&quot;;</li>
+<li><doc-anchor-trigger to="#adding-global-actions">global actions</doc-anchor-trigger>, displayed above the data table - e.g. &quot;Create new user&quot;;</li>
+<li><doc-anchor-trigger to="#adding-batch-actions">batch actions</doc-anchor-trigger>, requiring the user to select one or more rows, e.g. &quot;Delete selected&quot;;</li>
+<li><doc-anchor-trigger to="#adding-row-actions">row actions</doc-anchor-trigger>, displayed on each row, e.g. &quot;Edit&quot;, &quot;Delete&quot;;</li>
 </ul>
 <p>Similar to data tables, columns and filters, actions are defined using the <a href="../../features/type-classes/">type classes</a>.</p>
 <doc-anchor-target id="adding-global-actions">
@@ -244,6 +245,68 @@ class ProductDataTableType extends AbstractDataTableType
 <li>action options — defined by the action type, used to configure the action;</li>
 </ul>
 <p>For reference, see <a href="../components/actions/types.md">built-in action types</a>.</p>
+<doc-anchor-target id="adding-batch-actions">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#adding-batch-actions">#</doc-anchor-trigger>
+        <span>Adding batch actions</span>
+    </h2>
+</doc-anchor-target>
+<p><figure class="content-right">
+    <img src="../../static/batch_action.png" alt="Batch action with the Tabler theme" />
+    <figcaption class="caption caption-float">Batch action with the Tabler theme</figcaption>
+</figure>
+</p>
+<p>Let&#x27;s assume that the application has an <code v-pre>app_product_delete_batch</code> route for deleting products.<br />
+The user should be able to select a few rows and click a &quot;Delete selected&quot; button above the data table.</p>
+<p>To begin with, make sure the <a href="../../installation/#enable-the-symfony-ux-integration">Symfony UX integration is enabled</a>.
+Then, enable the <code v-pre>batch</code> controller:</p>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">assets/controllers.json</div>
+<pre class="language-json"><code v-pre class="language-json">{
+    &quot;controllers&quot;: {
+        &quot;@kreyu/data-table-bundle&quot;: {
+            &quot;batch&quot;: {
+                &quot;enabled&quot;: true
+            }
+        }
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>To add batch action, use the builder&#x27;s <code v-pre>addBatchAction()</code> method:</p>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/DataTable/Type/ProductDataTableType.php</div>
+<pre class="language-php"><code v-pre class="language-php">use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
+use Kreyu\Bundle\DataTableBundle\Action\Type\ButtonActionType;
+use Kreyu\Bundle\DataTableBundle\Type\AbstractDataTableType;
+
+class ProductDataTableType extends AbstractDataTableType
+{
+    public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
+    {
+        // Columns, filters and exporters added before...
+        
+        $builder
+            -&gt;addBatchAction('delete', FormActionType::class, [
+                'label' =&gt; 'Delete selected',
+                'action' =&gt; $this-&gt;urlGenerator-&gt;generate('app_product_delete_batch'),
+                'method' =&gt; 'DELETE',
+                'icon_attr' =&gt; [
+                    // For example, using Tabler Icons
+                    // https://tabler-icons.io/
+                    'class' =&gt; 'ti ti-trash', 
+                ],
+            ])
+        ;
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>Similarly to the builder&#x27;s <code v-pre>addAction()</code> method, the <code v-pre>addBatchAction()</code> method accepts <em>three</em> arguments:</p>
+<ul>
+<li>action name;</li>
+<li>action type — with a fully qualified class name;</li>
+<li>action options — defined by the action type, used to configure the action;</li>
+</ul>
+<p>For reference, see <a href="../components/actions/types.md">built-in action types</a>.</p>
 <doc-anchor-target id="adding-row-actions">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#adding-row-actions">#</doc-anchor-trigger>
@@ -255,15 +318,9 @@ class ProductDataTableType extends AbstractDataTableType
     <figcaption class="caption caption-float">Row actions with the built-in Tabler theme</figcaption>
 </figure>
 </p>
-<p>Let&#x27;s assume that the application has routes for showing product details, editing and deleting the product.
-Those actions cannot be global because they are bound to each row, and in fact, to a specific product (the routes require product identifier).</p>
-<p>To handle this type of actions, there&#x27;s a <a href="../components/columns/types/actions.md">built-in action column type</a>, which allows using the same action type classes as in their global definition.</p>
-<p>Since there are no <code v-pre>addAction()</code> method, the actions are defined in <a href="../../features/type-classes/#type-configuration-options">the options</a>.
-The action names are passed as the <a href="../components/columns/types/actions.md">actions</a> option array keys. Each entry requires:</p>
-<ul>
-<li>a <code v-pre>type</code> option — same as the <code v-pre>addAction()</code> second argument;</li>
-<li>a <code v-pre>type_options</code> option — same as the <code v-pre>addAction()</code> third argument;</li>
-</ul>
+<p>Let&#x27;s assume that the application has an <code v-pre>app_product_show</code> route for showing details about specific product.
+This route requires a product identifier, therefore it has to be a row action.</p>
+<p>To add batch action, use the builder&#x27;s <code v-pre>addRowAction()</code> method:</p>
 <div class="codeblock-wrapper"><doc-codeblock line-numbers>
 <div class="codeblock-title">src/DataTable/Type/ProductDataTableType.php</div>
 <pre class="language-php"><code v-pre class="language-php">use App\Entity\Product;
@@ -279,77 +336,30 @@ class ProductDataTableType extends AbstractDataTableType
         // Columns, filters and exporters added before...
         
         $builder
-            -&gt;addColumn('actions', ActionsColumnType::class, [
-                'actions' =&gt; [
-                    'update' =&gt; [
-                        'type' =&gt; ButtonActionType::class,
-                        'type_options' =&gt; [
-                            'label' =&gt; false,
-                            'href' =&gt; function (Product $product): string {
-                                return $this-&gt;urlGenerator-&gt;generate('app_product_update', [
-                                    'id' =&gt; $product-&gt;getId(),
-                                ]);
-                            },
-                            'icon_attr' =&gt; [
-                                // For example, using Tabler Icons
-                                // https://tabler-icons.io/
-                                'class' =&gt; 'ti ti-user icon',
-                            ],
-                        ],
-                    ],
+            -&gt;addRowAction('show', ButtonActionType::class, [
+                'label' =&gt; false,
+                'href' =&gt; function (Product $product): string {
+                    return $this-&gt;urlGenerator-&gt;generate('app_product_show', [
+                        'id' =&gt; $product-&gt;getId(),
+                    ]);
+                },
+                'icon_attr' =&gt; [
+                    // For example, using Tabler Icons
+                    // https://tabler-icons.io/
+                    'class' =&gt; 'ti ti-user icon', 
                 ],
             ])
         ;
     }
 }</code></pre>
 </doc-codeblock></div>
-<p>There&#x27;s one thing missing... a delete action! But let&#x27;s say it is different because it requires a <em>POST request</em> to delete a product.
-In this case, the built-in form action type will handle it:</p>
-<div class="codeblock-wrapper"><doc-codeblock line-numbers>
-<div class="codeblock-title">src/DataTable/Type/ProductDataTableType.php</div>
-<pre class="language-php"><code v-pre class="language-php">use App\Entity\Product;
-use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
-use Kreyu\Bundle\DataTableBundle\Type\AbstractDataTableType;
-
-class ProductDataTableType extends AbstractDataTableType
-{
-    public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
-    {
-        // Columns, filters and exporters added before...
-        
-        $builder
-            -&gt;addColumn('actions', ActionsColumnType::class, [
-                'actions' =&gt; [
-                    'update' =&gt; [
-                        // Configuration added before...
-                    ],
-                    'delete' =&gt; [
-                        'type' =&gt; FormActionType::class,
-                        'type_options' =&gt; [
-                            'label' =&gt; false,
-                            'method' =&gt; 'POST',
-                            'action' =&gt; function (Product $product): string {
-                                return $this-&gt;urlGenerator-&gt;generate('app_category_delete', [
-                                    'id' =&gt; $product-&gt;getId(),
-                                ]);
-                            },
-                            'button_attr' =&gt; [
-                                'class' =&gt; 'btn btn-danger btn-icon'
-                            ],
-                            'icon_attr' =&gt; [
-                                // For example, using Tabler Icons
-                                // https://tabler-icons.io/
-                                'class' =&gt; 'ti ti-user icon',
-                            ],
-                        ],
-                    ],
-                ],
-            ])
-        ;
-    }
-}</code></pre>
-</doc-codeblock></div>
-<p>Now everything works fine - clicking on the delete actions sends a POST request, because the action is wrapped in a form configured to use the POST method.</p>
+<p>Similarly to the builder&#x27;s <code v-pre>addAction()</code> and <code v-pre>addBatchAction()</code> methods, the <code v-pre>addRowAction()</code> method accepts <em>three</em> arguments:</p>
+<ul>
+<li>action name;</li>
+<li>action type — with a fully qualified class name;</li>
+<li>action options — defined by the action type, used to configure the action;</li>
+</ul>
+<p>For reference, see <a href="../components/actions/types.md">built-in action types</a>.</p>
 <doc-anchor-target id="enabling-action-confirmation">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#enabling-action-confirmation">#</doc-anchor-trigger>

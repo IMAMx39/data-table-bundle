@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743083241554">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743083253924">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -21,22 +21,24 @@
     <meta property="og:url" content="https://data-table-bundle.swroblewski.pl/features/actions/row-actions/">
     <meta property="og:title" content="Row actions - DataTableBundle">
     <meta property="og:description" content="Row actions are actions in the context of the specific row.">
+    <meta property="og:image" content="https://data-table-bundle.swroblewski.pl/static/action_confirmation_modal.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://data-table-bundle.swroblewski.pl/features/actions/row-actions/">
     <meta property="twitter:title" content="Row actions - DataTableBundle">
     <meta property="twitter:description" content="Row actions are actions in the context of the specific row.">
+    <meta property="twitter:image" content="https://data-table-bundle.swroblewski.pl/static/action_confirmation_modal.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../static/favicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=3.0.3.743083241554" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=3.0.3.743083253924" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.743083241554" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.743083253924" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.743083241554" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=3.0.3.743083241554" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.743083253924" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=3.0.3.743083253924" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -431,6 +433,60 @@ Therefore, actions retrieved by the methods:</p>
         </div>
     </div>
 </div>
+<doc-anchor-target id="adding-action-confirmation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#adding-action-confirmation">#</doc-anchor-trigger>
+        <span>Adding action confirmation</span>
+    </h2>
+</doc-anchor-target>
+<p>Actions can be configured to require confirmation (by the user) before being executed.</p>
+<p><figure class="content-center">
+    <img src="../../../static/action_confirmation_modal.png" alt="Action confirmation modal with the Tabler theme" />
+    <figcaption class="caption">Action confirmation modal with the Tabler theme</figcaption>
+</figure>
+</p>
+<p>To enable confirmation in the quickest way, set the action&#x27;s <code v-pre>confirmation</code> option to <code v-pre>true</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/DataTable/Type/ProductDataTableType.php</div>
+<pre class="language-php" data-line="10"><code v-pre class="language-php">use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
+use Kreyu\Bundle\DataTableBundle\Type\AbstractDataTableType;
+use Kreyu\Bundle\DataTableBundle\Action\Type\ButtonActionType;
+
+class ProductDataTableType extends AbstractDataTableType
+{
+    public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
+    {
+        $builder-&gt;addRowAction('create', ButtonActionType::class, [
+            'confirmation' =&gt; true,
+        ]);
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>To configure the confirmation modal, pass the array as the <code v-pre>confirmation</code> option:</p>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">src/DataTable/Type/ProductDataTableType.php</div>
+<pre class="language-php" data-line="10-17"><code v-pre class="language-php">use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
+use Kreyu\Bundle\DataTableBundle\Type\AbstractDataTableType;
+use Kreyu\Bundle\DataTableBundle\Action\Type\ButtonActionType;
+
+class ProductDataTableType extends AbstractDataTableType
+{
+    public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
+    {
+        $builder-&gt;addRowAction('create', ButtonActionType::class, [
+            'confirmation' =&gt; [
+                'translation_domain' =&gt; 'KreyuDataTable',
+                'label_title' =&gt; 'Action confirmation',
+                'label_description' =&gt; 'Are you sure you want to execute this action?',
+                'label_confirm' =&gt; 'Confirm',
+                'label_cancel' =&gt; 'Cancel',
+                'type' =&gt; 'danger', // &quot;danger&quot;, &quot;warning&quot; or &quot;info&quot;
+            ],
+        ]);
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>For reference, see <a href="../../../reference/actions/types/action/#confirmation">action&#x27;s <code v-pre>confirmation</code> option documentation</a>.</p>
 
                                 
                                 <!-- Required only on API pages -->
