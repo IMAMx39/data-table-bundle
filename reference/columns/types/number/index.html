@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743088604596">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.743163316115">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -31,12 +31,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../../static/favicon.png" rel="icon" />
-    <link href="../../../../resources/css/retype.css?v=3.0.3.743088604596" rel="stylesheet" />
+    <link href="../../../../resources/css/retype.css?v=3.0.3.743163316115" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../../resources/js/config.js?v=3.0.3.743088604596" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=3.0.3.743163316115" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=3.0.3.743088604596" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=3.0.3.743088604596" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=3.0.3.743163316115" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=3.0.3.743163316115" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -211,7 +211,74 @@
         <span>Options</span>
     </h2>
 </doc-anchor-target>
-<p>This column type has no additional options.</p>
+<doc-anchor-target id="use_intl_formatter">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#use_intl_formatter">#</doc-anchor-trigger>
+        <span><code v-pre>use_intl_formatter</code></span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>type</strong>: <code v-pre>bool</code></li>
+<li><strong>default</strong>: <code v-pre>true</code> if either <a href="https://packagist.org/packages/symfony/intl"><code v-pre>symfony/intl</code></a> or <a href="https://packagist.org/packages/twig/intl-extra"><code v-pre>twig/intl-extra</code></a> is installed</li>
+</ul>
+<p>Determines whether the <a href="https://www.php.net/manual/en/class.numberformatter.php">Intl number formatter</a> should be used.
+Enabling this option will automatically handle the formatting based on the locale set in the application.
+For example, value <code v-pre>123456.78</code> will be rendered differently:</p>
+<ul>
+<li><code v-pre>123,456.78</code> when using <code v-pre>en</code> locale;</li>
+<li><code v-pre>123 456,78</code> when using <code v-pre>pl</code> locale;</li>
+<li>etc.</li>
+</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Note</h5>
+<p>When using Twig, enabling the Intl formatter without <a href="https://packagist.org/packages/twig/intl-extra"><code v-pre>twig/intl-extra</code></a> installed will result in an exception:</p>
+<blockquote>
+<p>The &quot;format_currency&quot; filter is part of the IntlExtension, which is not installed/enabled; try running &quot;composer require twig/intl-extra&quot;</p>
+</blockquote>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="intl_formatter_options">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#intl_formatter_options">#</doc-anchor-trigger>
+        <span><code v-pre>intl_formatter_options</code></span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>type</strong>: <code v-pre>array</code></li>
+<li><strong>default</strong>: <code v-pre>['attrs' =&gt; [], 'style' =&gt; 'decimal']</code></li>
+</ul>
+<p>Configures the <a href="https://www.php.net/manual/en/class.numberformatter.php">Intl number formatter</a> if used.
+For example, to limit decimal places to two:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-php"><code v-pre class="language-php">$builder
+    -&gt;addColumn('price', MoneyColumnType::class, [
+        'intl_formatter_options' =&gt; [
+            'attrs' =&gt; [
+                // https://www.php.net/manual/en/class.numberformatter.php#numberformatter.constants.max-fraction-digits
+                'max_fraction_digit' =&gt; 2,
+            ],
+        ])
+    ])
+;</code></pre>
+</doc-codeblock></div>
+<p>For more details, see:</p>
+<ul>
+<li><a href="https://www.php.net/manual/en/class.numberformatter.php">Intl number formatter documentation</a></li>
+<li><a href="https://twig.symfony.com/doc/2.x/filters/format_number.html">Twig <code v-pre>format_number</code> filter documentation</a></li>
+</ul>
 <doc-anchor-target id="inherited-options">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#inherited-options">#</doc-anchor-trigger>
@@ -455,10 +522,10 @@ This can be useful when you need to set a custom class for a column:</p>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../reference/columns/types/boolean/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../reference/columns/types/money/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Boolean</span>
+                                                <span class="block mt-1">Money</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
