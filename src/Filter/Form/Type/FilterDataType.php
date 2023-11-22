@@ -16,18 +16,29 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FilterDataType extends AbstractType implements DataMapperInterface
 {
-    public function buildView(FormView $view, FormInterface $form, array $options): void
-    {
-        $view->vars['operator_selectable'] = $options['operator_selectable'];
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('value', $options['form_type'], $options['form_options'])
-            ->add('operator', $options['operator_form_type'], $options['operator_form_options'])
+            ->add('operator', $options['operator_form_type'], $options['operator_form_options'] + [
+                'empty_data' => $options['default_operator'],
+            ])
             ->setDataMapper($this)
         ;
+    }
+
+    public function buildView(FormView $view, FormInterface $form, array $options): void
+    {
+        $view->vars = array_replace($view->vars, [
+            'default_operator' => $options['default_operator'],
+            'supported_operators' => $options['supported_operators'],
+            'operator_selectable' => $options['operator_selectable'],
+        ]);
+    }
+
+    public function finishView(FormView $view, FormInterface $form, array $options): void
+    {
+        $view['operator']->vars['attr']['hidden'] = !$options['operator_selectable'];
     }
 
     public function configureOptions(OptionsResolver $resolver): void

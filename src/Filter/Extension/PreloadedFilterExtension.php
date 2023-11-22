@@ -6,11 +6,12 @@ namespace Kreyu\Bundle\DataTableBundle\Filter\Extension;
 
 use Kreyu\Bundle\DataTableBundle\Column\Extension\AbstractColumnExtension;
 use Kreyu\Bundle\DataTableBundle\Column\Type\ColumnTypeInterface;
+use Kreyu\Bundle\DataTableBundle\Filter\Type\FilterTypeInterface;
 
-class PreloadedFilterExtension extends AbstractColumnExtension
+class PreloadedFilterExtension extends AbstractFilterExtension
 {
     /**
-     * @param array<ColumnTypeInterface>                         $types
+     * @param array<FilterTypeInterface> $types
      * @param array<string, array<FilterTypeExtensionInterface>> $typeExtensions
      */
     public function __construct(
