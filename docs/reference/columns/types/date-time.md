@@ -22,7 +22,7 @@ The `DateTimeColumnType` represents a column with value displayed as a date and 
 - **type**: `string`
 - **default**: `'d.m.Y H:i:s'`
 
-The format specifier is the same as supported by [date](https://www.php.net/date).
+The format supported by [date PHP function](https://www.php.net/date).
 
 ## Inherited options
 

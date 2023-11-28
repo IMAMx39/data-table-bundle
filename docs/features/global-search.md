@@ -4,8 +4,6 @@ order: f
 
 # Global search
 
-![Search filter input with the Tabler theme](./../static/global_search.png)--
-
 While the filters may be useful in many cases, they are tied to a specific fields.
 Sometimes all the user needs is a single text input, to quickly search through multiple fields.
 
@@ -20,7 +18,7 @@ which gets an instance of query, and a search string as its arguments:
 ```php # src/DataTable/Type/ProductDataTableType.php
 use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
 use Kreyu\Bundle\DataTableBundle\Type\AbstractDataTableType;
-use Kreyu\Bundle\DataTableBundle\Bridge\Doctrine\Orm\Query\DoctrineOrmProxyQuery;
+use Kreyu\Bundle\DataTableDoctrineOrmBundle\Query\DoctrineOrmProxyQuery;
 
 class ProductDataTableType extends AbstractDataTableType
 {

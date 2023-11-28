@@ -1,5 +1,6 @@
 ---
 label: Search
+order: 800
 tags:
   - filters
 ---
@@ -9,7 +10,7 @@ tags:
 The `SearchFilterType` represents a special filter to handle the [global search](../../../features/global-search.md) feature.
 
 +---------------------+--------------------------------------------------------------+
-| Parent type         | [FilterType](../filter)
+| Parent type         | [FilterType](filter.md)
 +---------------------+--------------------------------------------------------------+
 | Class               | [:icon-mark-github: SearchFilterType](https://github.com/Kreyu/data-table-bundle/blob/main/src/Filter/Type/SearchFilterType.php)
 +---------------------+--------------------------------------------------------------+

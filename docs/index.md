@@ -1,9 +1,8 @@
 ---
-order: 6
+order: 900
 ---
 
 # Introduction
-
 
 This bundle aims to streamline the creation process of the data tables in Symfony applications.
 

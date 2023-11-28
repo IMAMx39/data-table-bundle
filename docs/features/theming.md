@@ -98,12 +98,13 @@ Because `themes` configuration option accepts an array of themes,
 you can provide your own theme with only a fraction of Twig blocks,
 using the built-in themes as a fallback, for example:
 
-```twig
-{# templates/data_table/theme.html.twig #}
+{% raw %}
+```twig templates/data_table/theme.html.twig
 {% block column_boolean_value %}
     {# ... #}
 {% endblock %}
 ```
+{% endraw %}
 
 +++ Globally (YAML)
 ```yaml # config/packages/kreyu_data_table.yaml

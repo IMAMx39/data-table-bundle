@@ -1,6 +1,6 @@
 ---
 label: Entity
-order: f
+order: 600
 tags:
   - filters
   - doctrine orm
@@ -12,10 +12,12 @@ The `EntityFilterType` represents a filter that operates on identifier values.
 
 Displayed as a selector, allows the user to select a specific entity loaded from the database, to query by its identifier.
 
+{{ include '_integration_bundle_required_note' }}
+
 +---------------------+--------------------------------------------------------------+
 | Parent type         | [DoctrineOrmFilterType](doctrine-orm.md)
 +---------------------+--------------------------------------------------------------+
-| Class               | [:icon-mark-github: EntityFilterType](https://github.com/Kreyu/data-table-bundle/blob/main/src/Filter/Type/EntityFilterType.php)
+| Class               | [:icon-mark-github: EntityFilterType](https://github.com/Kreyu/data-table-doctrine-orm-bundle/blob/main/src/Filter/Type/EntityFilterType.php)
 +---------------------+--------------------------------------------------------------+
 | Form Type           | [EntityType](https://symfony.com/doc/current/reference/forms/types/entity.html)
 +---------------------+--------------------------------------------------------------+

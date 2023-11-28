@@ -1,6 +1,6 @@
 ---
-label: DoctrineOrm
-order: z
+label: Doctrine ORM
+order: 100
 tags:
   - filters
   - doctrine orm
@@ -9,6 +9,8 @@ tags:
 # Doctrine ORM filter type
 
 The `DoctrineOrmFilterType` represents a base filter used as a parent for every other Doctrine ORM filter type in the bundle.
+
+{{ include '_integration_bundle_required_note' }}
 
 +---------------------+--------------------------------------------------------------+
 | Parent type         | [FilterType](../filter)

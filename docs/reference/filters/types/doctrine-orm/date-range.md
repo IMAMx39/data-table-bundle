@@ -1,25 +1,25 @@
 ---
-label: DateTime
-order: 700
+label: DateRange
+order: 650
 tags:
   - filters
   - doctrine orm
 ---
 
-# DateTime filter type
+# DateRange filter type
 
-The `DateTimeFilterType` represents a filter that operates on datetime values.
+The `DateRangeFilterType` represents a filter that operates on a date range.
 
 {{ include '_integration_bundle_required_note' }}
 
 +---------------------+--------------------------------------------------------------+
 | Parent type         | [DoctrineOrmFilterType](doctrine-orm.md)
 +---------------------+--------------------------------------------------------------+
-| Class               | [:icon-mark-github: DateTimeFilterType](https://github.com/Kreyu/data-table-doctrine-orm-bundle/blob/main/src/Filter/Type/DateTimeFilterType.php)
+| Class               | [:icon-mark-github: DateRangeFilterType](https://github.com/Kreyu/data-table-doctrine-orm-bundle/blob/main/src/Filter/Type/DateRangeFilterType.php)
 +---------------------+--------------------------------------------------------------+
-| Form Type           | [DateTimeType](https://symfony.com/doc/current/reference/forms/types/datetime.html)
+| Form Type           | [:icon-mark-github: DateRangeType](https://github.com/Kreyu/data-table-bundle/blob/main/src/Filter/Form/Type/DateRangeType.php)
 +---------------------+--------------------------------------------------------------+
-| Supported operators | Equals, NotEquals, GreaterThan, GreaterThanEquals, LessThan, LessThanEquals
+| Supported operators | Equals
 +---------------------+--------------------------------------------------------------+
 | Default operator    | Equals
 +---------------------+--------------------------------------------------------------+

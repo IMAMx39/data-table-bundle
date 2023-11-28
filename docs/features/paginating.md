@@ -1,8 +1,8 @@
 ---
-order: d
+order: 900
 ---
 
-# Pagination
+# Paginating
 
 The data tables can be _paginated_, which is crucial when working with large data sources.
 

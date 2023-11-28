@@ -10,10 +10,10 @@ This bundle provides persistence feature, ready to use with data table sorting, 
 
 Persistence can be toggled per feature with its own configuration:
 
-- [Features > Pagination > Configuring the feature persistence](pagination.md#configuring-the-feature-persistence)
-- [Features > Sorting > Configuring the feature persistence](sorting.md#configuring-the-feature-persistence)
-- [Features > Filtering > Configuring the feature persistence](filtering.md#configuring-the-feature-persistence)
-- [Features > Personalization > Configuring the feature persistence](personalization.md#configuring-the-feature-persistence)
+- Features :icon-chevron-right: Paginating :icon-chevron-right: [Configuring the feature persistence](pagination.md#configuring-the-feature-persistence)
+- Features :icon-chevron-right: Sorting :icon-chevron-right: [Configuring the feature persistence](sorting.md#configuring-the-feature-persistence)
+- Features :icon-chevron-right: Filtering :icon-chevron-right: [Configuring the feature persistence](filtering.md#configuring-the-feature-persistence)
+- Features :icon-chevron-right: Personalization :icon-chevron-right: [Configuring the feature persistence](personalization.md#configuring-the-feature-persistence)
 
 ## Persistence adapters
 

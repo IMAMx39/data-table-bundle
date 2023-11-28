@@ -1,19 +1,21 @@
 ---
-label: Numeric
-order: b
+label: Number
+order: 850
 tags:
   - filters
   - doctrine orm
 ---
 
-# Numeric filter type
+# Number filter type
 
-The `NumericFilterType` represents a filter that operates on numeric values.
+The `NumberFilterType` represents a filter that operates on numeric values.
+
+{{ include '_integration_bundle_required_note' }}
 
 +---------------------+--------------------------------------------------------------+
 | Parent type         | [DoctrineOrmFilterType](doctrine-orm.md)
 +---------------------+--------------------------------------------------------------+
-| Class               | [:icon-mark-github: NumericFilterType](https://github.com/Kreyu/data-table-bundle/blob/main/src/Filter/Type/NumericFilterType.php)
+| Class               | [:icon-mark-github: NumberFilterType](https://github.com/Kreyu/data-table-doctrine-orm-bundle/blob/main/src/Filter/Type/NumberFilterType.php)
 +---------------------+--------------------------------------------------------------+
 | Form Type           | [TextType](https://symfony.com/doc/current/reference/forms/types/text.html)
 +---------------------+--------------------------------------------------------------+

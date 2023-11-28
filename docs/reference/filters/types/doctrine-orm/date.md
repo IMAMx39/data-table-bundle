@@ -1,6 +1,6 @@
 ---
 label: Date
-order: d
+order: 750
 tags:
   - filters
   - doctrine orm
@@ -10,10 +10,12 @@ tags:
 
 The `DateFilterType` represents a filter that operates on date values.
 
+{{ include '_integration_bundle_required_note' }}
+
 +---------------------+--------------------------------------------------------------+
 | Parent type         | [DoctrineOrmFilterType](doctrine-orm.md)
 +---------------------+--------------------------------------------------------------+
-| Class               | [:icon-mark-github: DateFilterType](https://github.com/Kreyu/data-table-bundle/blob/main/src/Filter/Type/DateFilterType.php)
+| Class               | [:icon-mark-github: DateFilterType](https://github.com/Kreyu/data-table-doctrine-orm-bundle/blob/main/src/Filter/Type/DateFilterType.php)
 +---------------------+--------------------------------------------------------------+
 | Form Type           | [DateType](https://symfony.com/doc/current/reference/forms/types/date.html)
 +---------------------+--------------------------------------------------------------+

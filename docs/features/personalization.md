@@ -4,8 +4,6 @@ order: d
 
 # Personalization
 
-![Personalization with the Tabler theme](../static/personalization_modal.png)--
-
 The data tables can be _personalized_, which can be helpful when working with many columns, by giving the user ability to:
 
 - set the priority (order) of the columns;
@@ -16,7 +14,6 @@ The data tables can be _personalized_, which can be helpful when working with ma
 To begin with, make sure the [Symfony UX integration is enabled](../installation.md#enable-the-symfony-ux-integration).
 Then, enable the **personalization** controller:
 
-:::flex
 ```json # assets/controllers.json
 {
     "controllers": {
@@ -28,7 +25,6 @@ Then, enable the **personalization** controller:
     }
 }
 ```
-:::
 
 ## Toggling the feature
 

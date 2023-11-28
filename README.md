@@ -16,7 +16,7 @@ Streamlines the creation process of the data tables in Symfony applications.
 - [Exporting](https://data-table-bundle.swroblewski.pl/features/exporting) with or without applied pagination, personalization and filters
 - [Theming](https://data-table-bundle.swroblewski.pl/features/theming) of every part of the bundle
 - [Data source agnostic](https://data-table-bundle.swroblewski.pl/features/proxy-queries) with Doctrine ORM supported out of the box
-- [Integration with Symfony UX Turbo](https://data-table-bundle.swroblewski.pl/features/symfony-ux-turbo) for asynchronicit
+- [Integration with Symfony UX Turbo](https://data-table-bundle.swroblewski.pl/features/symfony-ux-turbo) for asynchronicity
 
 ## Documentation
 

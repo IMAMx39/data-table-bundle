@@ -1,12 +1,10 @@
 ---
-order: e
+order: 750
 ---
 
 # Exporting
 
 The data tables can be _exported_, with use of the [exporters](../reference/exporters/types.md).
-
-![Export modal with the Tabler theme](./../static/export_modal.png)
 
 ## Toggling the feature
 

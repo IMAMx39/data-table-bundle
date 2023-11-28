@@ -1,16 +1,16 @@
 ---
-order: a
+order: 800
 ---
 
-# Global actions
+# Row actions
 
-Global actions are actions in the context of the whole data table, not tied to any specific row.
+Row actions are actions in the context of the specific row.
 
-## Adding global actions
+## Adding row actions
 
-To add global action, use data table builder's `addAction()` method:
+To add row action, use data table builder's `addRowAction()` method:
 
-```php #15-18 src/DataTable/Type/ProductDataTableType.php
+```php #15-21 src/DataTable/Type/ProductDataTableType.php
 use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
 use Kreyu\Bundle\DataTableBundle\Type\AbstractDataTableType;
 use Kreyu\Bundle\DataTableBundle\Action\Type\ButtonActionType;
@@ -25,9 +25,12 @@ class ProductDataTableType extends AbstractDataTableType
     
     public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
     {
-        $builder->addAction('create', ButtonActionType::class, [
-            'label' => 'Create new product',
-            'href' => $this->urlGenerator->generate('app_product_create'),
+        $builder->addRowAction('update', ButtonActionType::class, [
+            'href' => function (Product $product) {
+                return $this->urlGenerator->generate('app_product_update', [
+                    'id' => $product->getId(),
+                ]);
+            },
         ]);
     }
 }
@@ -35,7 +38,7 @@ class ProductDataTableType extends AbstractDataTableType
 
 The same method can also be used on already created data tables:
 
-```php #20-23 src/Controller/ProductController.php
+```php #20-26 src/Controller/ProductController.php
 use App\DataTable\Type\ProductDataTableType;
 use Kreyu\Bundle\DataTableBundle\DataTableFactoryAwareTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,9 +58,12 @@ class ProductController extends AbstractController
     {
         $dataTable = $this->createDataTable(ProductDataTableType::class);
         
-        $dataTable->addAction('create', ButtonActionType::class, [
-            'label' => 'Create new product',
-            'href' => $this->urlGenerator->generate('app_product_create'),
+        $dataTable->addRowAction('update', ButtonActionType::class, [
+            'href' => function (Product $product) {
+                return $this->urlGenerator->generate('app_product_update', [
+                    'id' => $product->getId(),
+                ]);
+            },
         ]);
     }
 }
@@ -71,9 +77,29 @@ This method accepts _three_ arguments:
 
 For reference, see [built-in action types](../../reference/actions/types.md).
 
-## Removing global actions
+## Adding actions column
 
-To remove existing global action, use the builder's `removeAction()` method:
+Row actions require a [ActionsColumnType](../../reference/columns/types/actions.md), 
+which simply renders given actions to the user.  To help with that process,
+if at least one row action is defined, this actions column will be added automatically.
+
+This column will be named `__actions`, which can be referenced using the constant:
+
+```php
+use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
+
+$column = $builder->getColumn(DataTableBuilderInterface::ACTIONS_COLUMN_NAME);
+```
+
+This behavior can be disabled (or enabled back again) using the builder's method:
+
+```php
+$builder->setAutoAddingActionsColumn(false);
+```
+
+## Removing row actions
+
+To remove existing row action, use the builder's `removeRowAction()` method:
 
 ```php #14 src/DataTable/Type/ProductDataTableType.php
 use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
@@ -89,7 +115,7 @@ class ProductDataTableType extends AbstractDataTableType
     
     public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
     {
-        $builder->removeAction('create');
+        $builder->removeRowAction('update');
     }
 }
 ```
@@ -110,16 +136,16 @@ class ProductController extends AbstractController
     {
         $dataTable = $this->createDataTable(ProductDataTableType::class);
         
-        $dataTable->removeAction('create');
+        $dataTable->removeRowAction('update');
     }
 }
 ```
 
-Any attempt of removing the non-existent action will silently fail.
+Any attempt of removing the non-existent row action will silently fail.
 
-## Retrieving global actions
+## Retrieving row actions
 
-To retrieve already defined global actions, use the builder's `getActions()` or `getAction()` method:
+To retrieve already defined row actions, use the builder's `getRowActions()` or `getRowAction()` method:
 
 ```php # src/DataTable/Type/ProductDataTableType.php
 use Kreyu\Bundle\DataTableBundle\DataTableBuilderInterface;
@@ -129,14 +155,14 @@ class ProductDataTableType extends AbstractDataTableType
 {
     public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
     {
-        // retrieve all previously defined actions:
-        $actions = $builder->getActions();
+        // retrieve all previously defined row actions:
+        $actions = $builder->getRowActions();
         
-        // or specific action:
-        $action = $builder->getAction('create');
+        // or specific row action:
+        $action = $builder->getRowAction('update');
         
-        // or simply check whether the action is defined:
-        if ($builder->hasAction('create')) {
+        // or simply check whether the row action is defined:
+        if ($builder->hasRowAction('update')) {
             // ...
         }
     }
@@ -159,14 +185,14 @@ class ProductController extends AbstractController
     {
         $dataTable = $this->createDataTable(ProductDataTableType::class);
         
-        // retrieve all previously defined actions:
-        $actions = $dataTable->getActions();
+        // retrieve all previously defined row actions:
+        $actions = $dataTable->getRowActions();
         
-        // or specific action:
-        $action = $dataTable->getAction('create');
+        // or specific row action:
+        $action = $dataTable->getRowAction('update');
         
-        // or simply check whether the action is defined:
-        if ($dataTable->hasAction('create')) {
+        // or simply check whether the row action is defined:
+        if ($dataTable->hasRowAction('update')) {
             // ...
         }
     }
@@ -175,20 +201,20 @@ class ProductController extends AbstractController
 
 !!!warning Warning
 Any attempt of retrieving a non-existent action will result in an `OutOfBoundsException`.  
-To check whether the global action of given name exists, use the `hasAction()` method.
+To check whether the row action of given name exists, use the `hasRowAction()` method.
 !!!
 
 !!!danger Important
 Within the data table builder, the actions are still in their build state!
 Therefore, actions retrieved by the methods:
 
-- `DataTableBuilderInterface::getActions()`
-- `DataTableBuilderInterface::getAction(string $name)`
+- `DataTableBuilderInterface::getRowActions()`
+- `DataTableBuilderInterface::getRowAction(string $name)`
 
 ...are instance of `ActionBuilderInterface`, whereas methods:
 
-- `DataTableInterface::getActions()`
-- `DataTableInterface::getAction(string $name)`
+- `DataTableInterface::getRowActions()`
+- `DataTableInterface::getRowAction(string $name)`
 
 ...return instances of `ActionInterface` instead.
 !!!
@@ -210,7 +236,7 @@ class ProductDataTableType extends AbstractDataTableType
 {
     public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
     {
-        $builder->addAction('create', ButtonActionType::class, [
+        $builder->addRowAction('update', ButtonActionType::class, [
             'confirmation' => true,
         ]);
     }
@@ -228,7 +254,7 @@ class ProductDataTableType extends AbstractDataTableType
 {
     public function buildDataTable(DataTableBuilderInterface $builder, array $options): void
     {
-        $builder->addAction('create', ButtonActionType::class, [
+        $builder->addRowAction('update', ButtonActionType::class, [
             'confirmation' => [
                 'translation_domain' => 'KreyuDataTable',
                 'label_title' => 'Action confirmation',
@@ -252,21 +278,24 @@ Action visibility can be configured using its [`visible` option](../../reference
 use Kreyu\Bundle\DataTableBundle\Action\Type\ButtonActionType;
 
 $builder
-    ->addAction('create', ButtonActionType::class, [
+    ->addRowAction('update', ButtonActionType::class, [
         'visible' => $this->isGranted('ROLE_ADMIN'),
     ])
 ;
 ```
 
-Another approach would be simply not adding the action at all:
+This will determine the visibility of the action in every row.
+In some cases, it may be useful to hide the action based on the row data, for example, only for products marked as "removable".
+In this case, the action's `visible` option can be set to a callable, which receives the row data as the first argument:
 
 ```php
 use Kreyu\Bundle\DataTableBundle\Action\Type\ButtonActionType;
 
-if ($this->isGranted('ROLE_ADMIN')) {
-    $builder->addAction('create', ButtonActionType::class);
-}
+$builder
+    ->addRowAction('update', ButtonActionType::class, [
+        'visible' => function (Product $product) {
+            return $product->isRemovable();
+        },
+    ])
+;
 ```
-
-What differentiates those two methods, is that by using the `visible` option, the action is still defined in the data table, but is not rendered in the view.
-It may be useful in some cases, for example, when the actions can be modified outside the data table builder.

@@ -1,9 +1,8 @@
 ---
 label: Callback
-order: g
+order: 850
 tags:
   - filters
-  - doctrine orm
 ---
 
 # Callback filter type
@@ -13,7 +12,7 @@ The `CallbackFilterType` represents a filter that operates on identifier values.
 Displayed as a selector, allows the user to select a specific entity loaded from the database, to query by its identifier.
 
 +---------------------+--------------------------------------------------------------+
-| Parent type         | [DoctrineOrmFilterType](doctrine-orm.md)
+| Parent type         | [FilterType](filter.md)
 +---------------------+--------------------------------------------------------------+
 | Class               | [:icon-mark-github: CallbackFilterType](https://github.com/Kreyu/data-table-bundle/blob/main/src/Filter/Type/CallbackFilterType.php)
 +---------------------+--------------------------------------------------------------+
@@ -33,25 +32,15 @@ Displayed as a selector, allows the user to select a specific entity loaded from
 Sets callable that operates on the query passed as a first argument:
 
 ```php #
-use Kreyu\Bundle\DataTableBundle\Bridge\Doctrine\Orm\Filter\Type\CallbackFilterType;
 use Kreyu\Bundle\DataTableBundle\Filter\FilterData;
 use Kreyu\Bundle\DataTableBundle\Filter\FilterInterface;
-use Kreyu\Bundle\DataTableBundle\Bridge\Doctrine\Orm\Query\DoctrineOrmProxyQuery;
+use Kreyu\Bundle\DataTableBundle\Filter\Type\CallbackFilterType;
+use Kreyu\Bundle\DataTableBundle\Query\ProxyQueryInterface;
 
 $builder
     ->addFilter('type', CallbackFilterType::class, [
-        'callback' => function (DoctrineOrmProxyQuery $query, FilterData $data, FilterInterface $filter): void {
-            $alias = current($query->getRootAliases());
-
-            // Remember to use parameters to prevent SQL Injection!
-            // To help with that, DoctrineOrmProxyQuery has a special method "getUniqueParameterId",
-            // that will generate a unique parameter name (inside its query context), handy!
-            $parameter = $query->getUniqueParameterId(); 
-            
-            $query
-                ->andWhere($query->expr()->eq("$alias.type", ":$parameter"))
-                ->setParameter($parameter, $data->getValue())
-            ;
+        'callback' => function (ProxyQueryInterface $query, FilterData $data, FilterInterface $filter): void {
+            // ...
         } 
     ])
 ```
@@ -59,4 +48,3 @@ $builder
 ## Inherited options
 
 {{ include '../_filter_options' }}
-{{ include '_doctrine_orm_filter_options' }}

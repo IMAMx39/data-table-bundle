@@ -24,7 +24,7 @@ This column type works exactly like `DateTimeColumnType`, but has a different de
 - **type**: `string`
 - **default**: `'d.m.Y'`
 
-The format specifier is the same as supported by [date](https://www.php.net/date).
+The format supported by [date PHP function](https://www.php.net/date).
 
 ## Inherited options
 
